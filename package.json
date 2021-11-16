@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^10.0.23"
+  }
+}

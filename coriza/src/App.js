@@ -1,6 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Header from './components/header';
 import Formulario from './components/Formulario';
+import Resumen from './components/Resumen';
+import Resultado from "./components/Resultado";
+
+import Spinner from './components/Spiner'
 
 import styled from '@emotion/styled';
 
@@ -16,6 +20,20 @@ padding: 3rem;
 
 
 function App() {
+
+  const [resumen, guardarResumen] = useState({
+    cotizacion: 0,
+    datos: {
+      marca: '',
+      yera: '',
+      plan: ''
+    }
+  });
+
+  const [cargando, guardarCargando] = useState(false);
+
+  const { cotizacion, datos } = resumen;
+
   return (
     <Fragment>
       <Contenedor>
@@ -27,8 +45,22 @@ function App() {
         <ContenedorFprmulario>
 
           <Formulario
-
+            guardarResumen={guardarResumen}
+            guardarCargando={guardarCargando}
           />
+
+
+          {cargando ? (<Spinner />) : null}
+          <Resumen
+            datos={datos}
+          />
+
+          {!cargando ? (
+            <Resultado
+              cotizacion={cotizacion}
+            />
+          ) : null}
+
 
         </ContenedorFprmulario>
 
@@ -36,5 +68,7 @@ function App() {
     </Fragment>
   );
 }
+
+
 
 export default App;

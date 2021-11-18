@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 
 const ContenedorHeader = styled.header`
@@ -22,15 +23,19 @@ const Header = ({ titulo }) => {
 
 
     return (
+        <Fragment>
 
-
-        < ContenedorHeader>
-            <TextoHeader> {titulo} </TextoHeader>
-        </ContenedorHeader>
-
+            < ContenedorHeader>
+                <TextoHeader> {titulo} </TextoHeader>
+            </ContenedorHeader>
+        </Fragment >
 
     );
 
 };
+
+Header.propTypes = {
+    titulo: PropTypes.string.isRequired
+}
 
 export default Header;
